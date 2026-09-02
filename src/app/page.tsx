@@ -1,3 +1,5 @@
+import KitchenInventory from "@/components/KitchenInventory";
+
 const features = [
   {
     eyebrow: "Inventory",
@@ -53,16 +55,15 @@ export default function Home() {
       </section>
 
       <section className="kitchen shell" id="kitchen">
-        <div>
+        <div className="kitchenIntro">
           <p className="kicker">YOUR KITCHEN</p>
           <h2>Start with what&apos;s on hand.</h2>
-          <p>Add ingredients manually today. Camera-assisted inventory and smarter expiration intelligence are on the roadmap.</p>
+          <p>
+            Add ingredients, place them in the pantry, fridge, or freezer, and give them a use-by date when you know it.
+            Your inventory stays saved in this browser while we build account-based syncing next.
+          </p>
         </div>
-        <div className="inventoryPreview">
-          <div className="inventoryTop"><span>Kitchen Inventory</span><strong>0 items</strong></div>
-          <button type="button">+ Add Ingredient</button>
-          <p>Your pantry is ready for its first item.</p>
-        </div>
+        <KitchenInventory />
       </section>
 
       <footer className="shell footer">
