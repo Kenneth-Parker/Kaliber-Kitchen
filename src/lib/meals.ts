@@ -10,14 +10,15 @@ export type Meal = {
   description: string;
   ingredients: MealIngredient[];
   favorite?: boolean;
+  source?: "template" | "user";
 };
 
-export const starterMeals: Meal[] = [
+export const exampleMealTemplates: Meal[] = [
   {
     id: "pbj",
     name: "PB&J",
-    description: "The always-ready classic.",
-    favorite: true,
+    description: "A simple example of an always-ready favorite.",
+    source: "template",
     ingredients: [
       { name: "Bread" },
       { name: "Peanut butter", aliases: ["peanutbutter"] },
@@ -27,8 +28,8 @@ export const starterMeals: Meal[] = [
   {
     id: "chicken-parm",
     name: "Chicken Parmesan",
-    description: "Crispy chicken, sauce, cheese and pasta.",
-    favorite: true,
+    description: "Example meal with protein, sauce, cheese and pasta.",
+    source: "template",
     ingredients: [
       { name: "Chicken breast", aliases: ["chicken", "chicken breasts"] },
       { name: "Eggs", aliases: ["egg"] },
@@ -42,8 +43,8 @@ export const starterMeals: Meal[] = [
   {
     id: "french-toast-breakfast",
     name: "French Toast, Bacon & Eggs",
-    description: "A full breakfast built from kitchen staples.",
-    favorite: true,
+    description: "Example breakfast that can be customized to your household.",
+    source: "template",
     ingredients: [
       { name: "Bread" },
       { name: "Eggs", aliases: ["egg"] },
@@ -57,8 +58,8 @@ export const starterMeals: Meal[] = [
   {
     id: "baked-chicken-rice-beans",
     name: "Baked Chicken, Yellow Rice & Beans",
-    description: "Baked chicken with yellow rice, beans, onions and garlic.",
-    favorite: true,
+    description: "Example dinner template with flexible chicken and bean choices.",
+    source: "template",
     ingredients: [
       { name: "Chicken", aliases: ["chicken thighs", "chicken legs", "chicken breast"] },
       { name: "Yellow rice" },
