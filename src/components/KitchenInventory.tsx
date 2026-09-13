@@ -26,15 +26,23 @@ export default function KitchenInventory() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    try { const saved = window.localStorage.getItem(STORAGE_KEY); if (saved) setItems(JSON.parse(saved)); }
-    catch { setItems([]); }
-    finally { setReady(true); }
+    const sync = () => {
+      try { const saved = window.localStorage.getItem(STORAGE_KEY); setItems(saved ? JSON.parse(saved) : []); }
+      catch { setItems([]); }
+    };
+    sync();
+    setReady(true);
+    window.addEventListener("kaliber-inventory-updated", sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener("kaliber-inventory-updated", sync);
+      window.removeEventListener("storage", sync);
+    };
   }, []);
 
   useEffect(() => {
     if (!ready) return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    window.dispatchEvent(new Event("kaliber-inventory-updated"));
   }, [items, ready]);
 
   const useSoonCount = useMemo(() => items.filter((item) => getUseSoonLabel(item.expiresOn)).length, [items]);
@@ -58,7 +66,7 @@ export default function KitchenInventory() {
     <div className="inventoryList">
       {!ready ? <p className="inventoryEmpty">Loading your kitchen...</p> : items.length === 0 ? <p className="inventoryEmpty">Your kitchen is empty. Add the first ingredient above.</p> : items.map((item) => {
         const useSoon = getUseSoonLabel(item.expiresOn);
-        return <article className="inventoryItem" key={item.id}><div><div className="inventoryItemTopline"><h3>{item.name}</h3>{useSoon && <span className="useSoonBadge">{useSoon}</span>}</div><p>{item.quantity} · {item.zone}{item.expiresOn ? ` · ${item.expiresOn}` : ""}</p></div><button type="button" onClick={() => setItems((current) => current.filter((x) => x.id !== item.id))}>Remove</button></article>;
+        return <article className="inventoryItem" key={item.id}><div><div className="inventoryItemTopline"><h3>{item.name}</h3>{useSoon && <span className="useSoonBadge">{useSoon}</span>}</div><p>{item.quantity} · {item.zone}{item.expiresOn ? ` · ${item.expiresOn}` : ""}</p></div><button type="button" aria-label={`Remove ${item.name}`} onClick={() => setItems((current) => current.filter((x) => x.id !== item.id))}>Remove</button></article>;
       })}
     </div>
   </div>;
