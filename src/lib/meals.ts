@@ -13,6 +13,8 @@ export type Meal = {
   source?: "template" | "user";
 };
 
+// These are examples only. Users can copy them into My Meals, edit them,
+// remove them, or create completely different household meals.
 export const exampleMealTemplates: Meal[] = [
   {
     id: "pbj",
