@@ -2,19 +2,16 @@
 
 **Cooking with Precision.**
 
-Kaliber Kitchen is a smart kitchen companion built to help people use what they already have, reduce food waste, discover meals, and shop more intentionally.
+Kaliber Kitchen is a smart kitchen companion designed to help people use what they already have, reduce food waste, discover meals, and shop intentionally.
 
-## Product Direction
+## Core product loop
 
-Kaliber Kitchen will grow around four core capabilities:
+**What I HAVE → What can I MAKE?**
 
-- **Kitchen inventory** — track pantry, refrigerator, and freezer items.
-- **Meal intelligence** — recommend meals based on available ingredients, priorities, and preferences.
-- **Waste reduction** — surface items that should be used soon and prioritize them in meal suggestions.
-- **Shopping** — turn missing recipe ingredients into an organized shopping list.
+**What I LOVE → What should I HAVE?**
 
-Future releases can add camera-assisted inventory, expiration estimation, nutrition preferences, household profiles, price comparison, and smarter recommendation features.
+The current prototype includes kitchen inventory, quantities and use-by dates, user-owned meals with editable starter templates, meal-readiness scoring, missing-ingredient detection, smart shopping recommendations, and a persistent shopping list.
 
-## Status
+## Product direction
 
-Kaliber Kitchen is under active development.
+Kaliber Kitchen is being built toward a phone-first **Scan → Know → Cook → Shop** experience. Planned increments include camera-assisted kitchen recognition, barcode scanning, account syncing, nearby ingredient sourcing, delivery and retail handoff, household profiles, and smarter recommendations.
